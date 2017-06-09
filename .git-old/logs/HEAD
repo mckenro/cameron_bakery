@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 b73b7fc4cdc056d41c0d6f67edcb712a2948ff4d Rob McKenzie <mckenro@gmail.com> 1497036567 -0700	commit (initial): correct syntax errors in bakery_user module
+b73b7fc4cdc056d41c0d6f67edcb712a2948ff4d 195bc8c734aa6af83b97234622964d40ba817876 Rob McKenzie <mckenro@gmail.com> 1497038162 -0700	commit: enable pastry quiz module
+195bc8c734aa6af83b97234622964d40ba817876 12cec4091e76d62aa17f5eaec6df1f4113c2d892 Rob McKenzie <mckenro@gmail.com> 1497044809 -0700	commit: add functioning quiz module
+12cec4091e76d62aa17f5eaec6df1f4113c2d892 6e71b1f75cf87074931d0f868bc892d7836183ce Rob McKenzie <mckenro@gmail.com> 1497046063 -0700	commit: add scratch theme
+6e71b1f75cf87074931d0f868bc892d7836183ce a85b9ec8e90e1ada875e3541884160013fc064cd Rob McKenzie <mckenro@gmail.com> 1497046141 -0700	commit: add zen theme
+a85b9ec8e90e1ada875e3541884160013fc064cd e75894aed944ab66c770c5821bc4a0e3bc2ea5f7 Rob McKenzie <mckenro@gmail.com> 1497046367 -0700	commit: add sub theme
+e75894aed944ab66c770c5821bc4a0e3bc2ea5f7 e75894aed944ab66c770c5821bc4a0e3bc2ea5f7 Rob McKenzie <mckenro@gmail.com> 1497046982 -0700	checkout: moving from master to rob
+e75894aed944ab66c770c5821bc4a0e3bc2ea5f7 e75894aed944ab66c770c5821bc4a0e3bc2ea5f7 Rob McKenzie <mckenro@gmail.com> 1497047237 -0700	checkout: moving from rob to master

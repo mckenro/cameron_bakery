@@ -21,6 +21,20 @@ function pastry_quiz_menu() {
         'type' => MENU_CALLBACK,
     );
 
+    $items['quiz_question_2'] = array(
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('quiz_form_2'),
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['quiz_question_3'] = array(
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('quiz_form_3'),
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
     $items['quiz_results'] = array(
         'title' => 'Quiz Results!',
         'page callback' => 'quiz_success',
@@ -30,6 +44,7 @@ function pastry_quiz_menu() {
 
     return $items;
 }
+
 function quiz_form() {
   $form['gluten'] = array(
       '#title' => 'Gluten Intollerance',
@@ -46,36 +61,71 @@ function quiz_form() {
           '#type' => 'submit',
           '#value' => 'submit',
   );
-
   return $form;
 }
 
-function start_form() {
-    // $form['gluten'] = array(
-    //     '#title' => 'Gluten Intollerance',
-    //     '#type' => 'radios',
-    //     '#description' => t('Are you gluten intollerant?'),
-    //     '#options' => array(
-    //         t('Yes'),
-    //         t('No'),
-    //     ),
-    //     '#required' => TRUE,
-    // );
-
+function quiz_form_2() {
+    $form['pies_or_cake'] = array(
+        '#title' => 'Pies or Cakes?',
+        '#type' => 'radios',
+        '#description' => t('Do you like pies or cakes?'),
+        '#options' => array(
+            t('Pies'),
+            t('Cakes'),
+        ),
+        '#required' => TRUE,
+    );
     $form['submit'] = array(
         '#type' => 'submit',
         '#value' => 'submit',
     );
+    return $form;
+}
 
+function quiz_form_3() {
+    $form['cream_or_fruit'] = array(
+        '#title' => 'Creamy or Fruity?',
+        '#type' => 'radios',
+        '#description' => t('Do you like creamy or fruity?'),
+        '#options' => array(
+            t('Creamy'),
+            t('Fruity'),
+        ),
+        '#required' => TRUE,
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'submit',
+    );
+    return $form;
+}
+
+function start_form() {
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'start quiz!',
+    );
     return $form;
 }
 
 function quiz_success() {
-  $gluten = $_SESSION['values']['gluten'];
-  if ($gluten) {
-    return '<p>get a donut!</p>';
-  } else {
-    return "<p>cool! we've got stuff for you too!/p>";
+  $gluten = $_SESSION['gluten'];
+  $piescakes = $_SESSION['pies_or_cake'];
+  $creamfruit = $_SESSION['cream_or_fruit'];
+  if ($gluten && $piescakes && $creamfruit) {
+    return "<p>You gotta try our Pineapple Upsidedown Cake!</p>";
+  } else if($gluten && $piescakes){
+    return "<p>You'll think our Chocolate Spoon Cake is out of this world!</p>";
+  } else if($gluten && $creamfruit){
+    return "<p>You'll love our Classic Apple pie!</p>";
+  } else if($piescakes && $creamfruit){
+    return "<p>We have a wide assortment of gluten-free cakes!</p>";
+  } else if($creamfruit){
+    return "<p>Our Gluten-free Fruit Tarts are just for you!</p>";
+  } else if ($gluten){
+    return "<p>Our New York Cheesecake is the best!</p>";
+  } else{
+    return "<p>Check out our amazing Gluten-free Pies!</p>";
   }
 }
 
@@ -87,5 +137,17 @@ function quiz_form_submit($form, &$form_state) {
   $form['gluten']['default_value'] = variable_get('comment_preview', 1);
   $gluten = $form_state['values']['gluten'];
   $_SESSION['gluten'] = $gluten;
+  $form_state['redirect'] = 'quiz_question_2';
+}
+
+function quiz_form_2_submit($form, &$form_state){
+  $piescakes = $form_state['values']['pies_or_cake'];
+  $_SESSION['pies_or_cake'] = $piescakes;
+  $form_state['redirect'] = 'quiz_question_3';
+}
+
+function quiz_form_3_submit($form, &$form_state){
+  $creamfruit = $form_state['values']['cream_or_fruit'];
+  $_SESSION['cream_or_fruit'] = $creamfruit;
   $form_state['redirect'] = 'quiz_results';
 }
