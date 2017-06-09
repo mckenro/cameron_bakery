@@ -41,7 +41,6 @@ function pastry_quiz_menu() {
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
     );
-
     return $items;
 }
 
